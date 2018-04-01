@@ -11,7 +11,8 @@ namespace Proiect_Colectiv.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class medicalRecord
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace Proiect_Colectiv.Models
         {
             this.Patients = new HashSet<Patient>();
         }
-    
+        [Key]
         public int idmedicalRecords { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public string vaccinations { get; set; }

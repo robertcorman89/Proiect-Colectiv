@@ -11,9 +11,11 @@ namespace Proiect_Colectiv.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Admin
     {
+        [Key]
         public int idAdmin { get; set; }
         public string userName { get; set; }
         public Nullable<int> idAssistant { get; set; }

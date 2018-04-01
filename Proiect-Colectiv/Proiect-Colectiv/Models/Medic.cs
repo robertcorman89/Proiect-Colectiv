@@ -11,7 +11,8 @@ namespace Proiect_Colectiv.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Medic
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,13 @@ namespace Proiect_Colectiv.Models
             this.Assistants = new HashSet<Assistant>();
             this.Patients = new HashSet<Patient>();
         }
-    
+        [Key]
         public int idMedic { get; set; }
+        [Display(Name = "First Name")]
         public string firstName { get; set; }
+        [Display(Name = "Last Name")]
         public string lastName { get; set; }
+        [Display(Name = "User Name")]
         public string userName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

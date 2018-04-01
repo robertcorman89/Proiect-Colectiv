@@ -11,7 +11,8 @@ namespace Proiect_Colectiv.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class medicalPrescription
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace Proiect_Colectiv.Models
         {
             this.Appointments = new HashSet<Appointment>();
         }
-    
+        [Key]
         public int idmedicalPrescription { get; set; }
         public string Diagnostic { get; set; }
         public string Medication { get; set; }

@@ -11,7 +11,8 @@ namespace Proiect_Colectiv.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Patient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace Proiect_Colectiv.Models
         {
             this.Appointments = new HashSet<Appointment>();
         }
-    
+        [Key]
         public string cardNumber { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }

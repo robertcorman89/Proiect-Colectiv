@@ -11,10 +11,13 @@ namespace Proiect_Colectiv.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Appointment
     {
+        [Key]
         public int idMedic { get; set; }
+        [Key]
         public string cardNumber { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<System.TimeSpan> Time { get; set; }

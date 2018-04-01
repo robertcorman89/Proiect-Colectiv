@@ -11,7 +11,8 @@ namespace Proiect_Colectiv.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Assistant
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace Proiect_Colectiv.Models
         {
             this.Admins = new HashSet<Admin>();
         }
-    
+    [Key]
         public int idAssistant { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
