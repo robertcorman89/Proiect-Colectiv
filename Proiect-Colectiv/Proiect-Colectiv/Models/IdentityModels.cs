@@ -29,5 +29,13 @@ namespace Proiect_Colectiv.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Proiect_Colectiv.Models.Appointment> Appointments { get; set; }
+
+        public System.Data.Entity.DbSet<Proiect_Colectiv.Models.Medic> Medics { get; set; }
+
+        public System.Data.Entity.DbSet<Proiect_Colectiv.Models.medicalPrescription> medicalPrescriptions { get; set; }
+
+        public System.Data.Entity.DbSet<Proiect_Colectiv.Models.Patient> Patients { get; set; }
     }
 }
