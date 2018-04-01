@@ -102,7 +102,7 @@ CREATE TABLE [dbo].[AspNetUsers] (
     [LockoutEnabled]       BIT            NOT NULL,
     [AccessFailedCount]    INT            NOT NULL,
     [UserName]             NVARCHAR (256) NOT NULL,
-	[idRole]               NVARCHAR(128)  NOT NULL,
+	[idRole]               NVARCHAR(128)  NULL,
     CONSTRAINT [PK_dbo.AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC),
 	FOREIGN KEY ([idRole]) REFERENCES [dbo].[AspNetRoles] ([Id])
 );
