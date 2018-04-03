@@ -170,7 +170,7 @@ namespace Proiect_Colectiv.Controllers
                 if (result.Succeeded)
                 {
                     
-                    if (model.idRole == "3")
+                    if (_db.AspNetRoles.Find(model.idRole).Name == "patient")
                     {
                         var patient = new Patient();
                         patient.cardNumber = model.cardNumber;
