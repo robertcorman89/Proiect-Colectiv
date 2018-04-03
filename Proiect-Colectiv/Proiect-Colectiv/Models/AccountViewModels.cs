@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Proiect_Colectiv.Models
@@ -65,8 +66,7 @@ namespace Proiect_Colectiv.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "User Name")]
         public string Email { get; set; }
 
         [Required]
@@ -79,6 +79,27 @@ namespace Proiect_Colectiv.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [Display(Name = "Card Number")]
+        [RegularExpression("[0-9]{13,13}", ErrorMessage = "The card number must contain exactly 13 digits")]
+        public string cardNumber { get; set; }
+        [Required]
+        [Display(Name = "First Name")]
+        public string firstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
+        public string lastName{ get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Birth Date")]
+        public DateTime birthDate { get; set; }
+        [Required]
+        [Display(Name = "CNP")]
+        [RegularExpression("[0-9]{13,13}", ErrorMessage = "The CNP must contain exactly 13 digits")]
+        public string CNP { get; set; }
+        [Required]
+        [Display(Name = "Role")]
+        public string idRole { get; set; }
     }
 
     public class ResetPasswordViewModel

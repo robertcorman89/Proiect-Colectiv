@@ -12,19 +12,24 @@ namespace Proiect_Colectiv.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class Entities : DbContext
+    using System.Data.Entity.ModelConfiguration.Conventions;
+
+    public partial class    Entities : DbContext
     {
         public Entities()
-            : base("name=Entities")
+            : base("name=ProiectColectiv.dbo")
         {
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-    
+        public static Entities Create()
+        {
+            return new Entities();
+        }
+
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }

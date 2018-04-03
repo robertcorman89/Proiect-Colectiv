@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace Proiect_Colectiv.Models
 {
@@ -13,9 +14,15 @@ namespace Proiect_Colectiv.Models
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
+            
             return userIdentity;
         }
+        public string idRole { get; set; }
+        public string firstName{ get; set; }
+        public string lastName { get; set; }
+        public string cardNumber { get; set; }
+        public string CNP { get; set; }
+        public DateTime birthDay { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -30,12 +37,12 @@ namespace Proiect_Colectiv.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Proiect_Colectiv.Models.Appointment> Appointments { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
 
-        public System.Data.Entity.DbSet<Proiect_Colectiv.Models.Medic> Medics { get; set; }
+        public DbSet<Medic> Medics { get; set; }
 
-        public System.Data.Entity.DbSet<Proiect_Colectiv.Models.medicalPrescription> medicalPrescriptions { get; set; }
+        public DbSet<medicalPrescription> medicalPrescriptions { get; set; }
 
-        public System.Data.Entity.DbSet<Proiect_Colectiv.Models.Patient> Patients { get; set; }
+        public DbSet<Patient> Patient { get; set; }
     }
 }

@@ -88,7 +88,6 @@ CREATE TABLE [dbo].[AspNetRoles] (
     [Name] NVARCHAR (256) NOT NULL,
     CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
-
 CREATE TABLE [dbo].[AspNetUsers] (
     [Id]                   NVARCHAR (128) NOT NULL,
     [Email]                NVARCHAR (256) NULL,
@@ -102,7 +101,12 @@ CREATE TABLE [dbo].[AspNetUsers] (
     [LockoutEnabled]       BIT            NOT NULL,
     [AccessFailedCount]    INT            NOT NULL,
     [UserName]             NVARCHAR (256) NOT NULL,
-	[idRole]               NVARCHAR(128)  NULL,
+    [idRole]               NVARCHAR (128) NULL,
+    [firstName]            NVARCHAR (100) NOT NULL,
+    [lastName]             NVARCHAR (100) NOT NULL,
+    [birthDay]             DATETIME       NOT NULL,
+    [cardNumber]           NVARCHAR (20)  NOT NULL,
+    [cnp]                  NVARCHAR (13)  NOT NULL,
     CONSTRAINT [PK_dbo.AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC),
 	FOREIGN KEY ([idRole]) REFERENCES [dbo].[AspNetRoles] ([Id])
 );

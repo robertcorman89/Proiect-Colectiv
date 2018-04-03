@@ -17,15 +17,18 @@ namespace Proiect_Colectiv.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private Entities _db;
 
         public AccountController()
         {
+            _db = Entities.Create();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, Entities dbManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            DbManager = dbManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -49,6 +52,17 @@ namespace Proiect_Colectiv.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+        public Entities DbManager
+        {
+            get
+            {
+                return _db = Entities.Create();
+            }
+            private set
+            {
+                _db = value;
             }
         }
 
@@ -151,10 +165,23 @@ namespace Proiect_Colectiv.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, birthDay = model.birthDate, cardNumber = model.cardNumber, CNP = model.CNP, firstName = model.firstName, lastName = model.lastName, idRole = model.idRole};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    
+                    if (model.idRole == "3")
+                    {
+                        var patient = new Patient();
+                        patient.cardNumber = model.cardNumber;
+                        patient.firstName = model.firstName;
+                        patient.lastName = model.lastName;
+                        patient.birthDate = model.birthDate;
+                        patient.email = model.Email;
+                        patient.CNP = model.CNP;
+                        _db.Patients.Add(patient);
+                        _db.SaveChanges();
+                    }
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

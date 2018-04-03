@@ -18,7 +18,6 @@ namespace Proiect_Colectiv.Models
         public AspNetRole()
         {
             this.AspNetUsers = new HashSet<AspNetUser>();
-            this.AspNetUsers1 = new HashSet<AspNetUser>();
         }
     
         public string Id { get; set; }

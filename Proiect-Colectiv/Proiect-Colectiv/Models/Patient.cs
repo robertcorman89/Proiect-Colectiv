@@ -20,13 +20,19 @@ namespace Proiect_Colectiv.Models
         {
             this.Appointments = new HashSet<Appointment>();
         }
+
         [Key]
         public string cardNumber { get; set; }
+     
         public string firstName { get; set; }
+        
         public string lastName { get; set; }
+       
         public System.DateTime birthDate { get; set; }
+        
         public string email { get; set; }
         public Nullable<int> idMedic { get; set; }
+       
         public string CNP { get; set; }
         public Nullable<int> idmedicalRecords { get; set; }
     
